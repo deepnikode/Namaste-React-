@@ -1,20 +1,61 @@
 import RestaurantCard from "./RestaurantCard";
 
 import resList from "../utils/mockData";
+import { useState } from "react";
 
-
+import resList from "../utils/mockData";
 
 
 const Body=()=>
     {
-        console.log("Body");
+
+
+        // let listOfRestaurant=[];
+        const [listOfRestaurants,setListOfRestaurant]=useState(resList);
+
+        
+        
+
+
+
+
+                           console.log("Body");
+
+
 
         return(
             <div className="body">
 
-                <div className="search">
-                    Search
+                <div className="filter">
+                    <button className="filter-btn" 
+                    onClick={   
+                                    ()=>{
+
+                                        const filteredList=listOfRestaurants.filter((res)=>res.info.avgRating>4.5);
+                                        
+                                        setListOfRestaurant(filteredList);
+
+                                        // setListOfRestaurant(
+                                        //     listOfRestaurants.filter((res)=>res.info.avgRating>4)
+                                        // );
+
+
+
+                                        // listOfRestaurant=listOfRestaurant.filter(
+                                        //     (res)=>res.info.avgRating>4
+                                        // );
+                                        // console.log(listOfRestaurant);
+                                        }
+                            } >Top rated Restaurant</button>
                 </div>
+
+
+
+
+
+
+
+
 
                 <div className="res-container">
                            
@@ -32,7 +73,9 @@ const Body=()=>
                     {/* Instead of this ^ i have used map to itterate the data.  */}
 
                     {
-                      resList.map(restaurant => <RestaurantCard key={restaurant.info.id} resData={restaurant} />)
+                       listOfRestaurants.map(restaurant => <RestaurantCard key={restaurant.info.id} resData={restaurant} />)
+                    // resList.map(restaurant => <RestaurantCard key={restaurant.info.id} resData={restaurant} />)
+
                     }
 
 
