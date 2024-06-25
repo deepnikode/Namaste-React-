@@ -199,6 +199,16 @@
             const RestaurantCard=(props)=>
             {
                 const {resData}=props;
+
+
+                const {cloudinaryImageId,name,cuisines,avgRating}= resData?.info;
+
+                // (?.)  -----> It is called OPTIONAL CHAINING, used to handel errors, 
+                //  if left side is not present then it doesnt ecxecutes right one also.
+                //    Left  ?.  Right
+                // insted of this --->  console.log(resData.info.name);  
+                // we can write this --->  console.log(name);  
+                
                 
                 console.log("++ Started++");
                 console.log(resData.info.availability.opened);
@@ -211,21 +221,32 @@
                 
                 return(
                     <div className="res-card" style={styleCard}>
+                        
                         <img 
                         className="res-logo"
-                        alt="res-logo" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+resData.info.cloudinaryImageId}
+                        alt="res-logo" 
+                        src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+resData.info.cloudinaryImageId}
                         />
+
                         {/* <h3>{props.resName}</h3>    // 1) U can also do this way
                         <h4>{props.cuisine}</h4> */}
 
                         {/* <h3>{resName}</h3>          // 2) U can also do this way
                         <h4>{cuisine}</h4> */}
 
-                        <h3>{resData.info.name}</h3>
+                       
+                        {/* <h3>{resData.info.name}</h3>
                         <h3>{resData.info.cuisines.join(", ")}</h3>
                         <h3>{resData.info.avgRating} Stars</h3>   
+                        <h3>{resData.info.sla.deliveryTime} Minutes</h3>   */}
+
+                        
+                      
+
+                        <h3>{name}</h3>
+                        <h3>{cuisines.join(", ")}</h3>
+                        <h3>{avgRating} Stars</h3>   
                         <h3>{resData.info.sla.deliveryTime} Minutes</h3>  
-                         
 
                         
 
@@ -248,7 +269,7 @@
 
 
 
-            const resObj= [
+            const resList= [
               {
                 "info": {
                   "id": "765152",
@@ -2096,17 +2117,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
      const Body=()=>
         {
             console.log("Body");
@@ -2122,19 +2132,25 @@
                                
                         {/* RestaurantCard - I have declared the container above */}
                         
-                       
+                        {/* <RestaurantCard resData={resList[1]} />
+                        <RestaurantCard resData={resList[2]} />
+                        <RestaurantCard resData={resList[3]} />
+                        <RestaurantCard resData={resList[4]} />
+                        <RestaurantCard resData={resList[5]} />
+                        <RestaurantCard resData={resList[6]} />
+                        <RestaurantCard resData={resList[7]} /> */}
 
-                        <RestaurantCard resData={resObj[0]} />
-                        <RestaurantCard resData={resObj[1]} />
-                        <RestaurantCard resData={resObj[2]} />
-                        <RestaurantCard resData={resObj[3]} />
-                        <RestaurantCard resData={resObj[4]} />
-                        <RestaurantCard resData={resObj[5]} />
-                        <RestaurantCard resData={resObj[6]} />
-                        <RestaurantCard resData={resObj[7]} />
-                        <RestaurantCard resData={resObj[8]} />
-                        <RestaurantCard resData={resObj[9]} />
-                        <RestaurantCard resData={resObj[10]} />
+
+                        {/* Instead of this ^ i have used map to itterate the data.  */}
+
+                        {
+                          resList.map(restaurant => <RestaurantCard key={restaurant.info.id} resData={restaurant} />)
+                        }
+
+
+
+
+                                               
                         
 
                         
