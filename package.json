@@ -2,12 +2,10 @@
   "name": "namaste-react",
   "version": "1.0.0",
   "description": "Namaste React by Deep Nikode",
-  
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.html",
     "test": "jest"
-    
   },
   "repository": {
     "type": "git",
@@ -28,8 +26,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
-  "browserslist":[
+  "browserslist": [
     "last 10 Chrome version",
-    "last 10 Firefox version"  
+    "last 10 Firefox version"
   ]
 }
