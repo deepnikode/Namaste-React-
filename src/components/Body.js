@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 
 import resList from "../utils/mockData";
 
+import Shimmer from "./Shimmer";
+
 
 const Body=()=>
     {
@@ -22,6 +24,13 @@ const Body=()=>
         // initial value of listOfRestaurants is empty array
         const [listOfRestaurants,setListOfRestaurant]=useState([]);
 
+        const [searchText, setSearchText]=useState("");
+
+
+        
+        console.log("Component Rendering");
+
+
         useEffect(()=>{
             console.log("UseEffect Called");
             fetchData();
@@ -38,6 +47,7 @@ const Body=()=>
 
             console.log("jsonData");
             console.log(jsonData);
+            
 
             //OPTIONAL CHAINING ( ?. ) 
             setListOfRestaurant(jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
@@ -47,22 +57,45 @@ const Body=()=>
 
         if(listOfRestaurants.length===0)
             {
-                return <h1>Loading</h1>
+                return <Shimmer/>;
             }
 
         
 
-        console.log("Component Rendering");
-
-
-                           console.log("Body");
-
-
+        
+         
 
         return(
             <div className="body">
 
                 <div className="filter">
+
+                    <div className="search">
+                        <input type="text" className="search-box" value={searchText} 
+                        onChange={
+                                (e)=>{
+                                        setSearchText(e.target.value); 
+                                    }
+                                }/>
+                        <button 
+                        onClick={
+                            ()=>{
+                                //Filter the Restaurants
+                                
+                                console.log(searchText);
+                                
+                                
+                                const filteredRestaurants=listOfRestaurants.filter(
+                                    (res) => res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                                );
+                                
+                                setListOfRestaurant(filteredRestaurants);
+
+                                }
+                        }       
+                        >Search Button</button>
+                    </div>
+
                     <button className="filter-btn" 
                     onClick={   
                                     ()=>{
@@ -83,6 +116,7 @@ const Body=()=>
                                         // console.log(listOfRestaurant);
                                         }
                             } >Top rated Restaurant</button>
+
                 </div>
 
 

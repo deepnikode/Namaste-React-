@@ -14,14 +14,14 @@ const RestaurantCard=(props)=>
         // we can write this --->  console.log(name);  
         
         
-        console.log("++ Started++");
-        console.log(resData.info.availability.opened);
-        //console.log(resData.info.badges.imageBadges);
-        console.log(resData.info.cloudinaryImageId);
-        console.log("https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/");
-        console.log("https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+resData.info.cloudinaryImageId);
+        // console.log("++ Started++");
+        // console.log(resData.info.availability.opened);
+        // //console.log(resData.info.badges.imageBadges);
+        // console.log(resData.info.cloudinaryImageId);
+        // console.log("https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/");
+        // console.log("https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+resData.info.cloudinaryImageId);
         
-        console.log(resData.info.name);
+        // console.log(resData.info.name);
         
         return(
             <div className="res-card" style={styleCard}>
