@@ -2,7 +2,7 @@ const resList= [
     {
       "info": {
         "id": "765152",
-        "name": "Pizza Hut",
+        "name": "Pizza Hut from MOCK DATA",
         "cloudinaryImageId": "490629b70f89da8a5b93fc199ece335e",
         "locality": "Pimpri chinchwad",
         "areaName": "Punawale",
