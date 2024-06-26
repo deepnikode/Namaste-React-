@@ -11,7 +11,16 @@ const Body=()=>
 
 
         // let listOfRestaurant=[];
-        const [listOfRestaurants,setListOfRestaurant]=useState(resList);
+
+
+
+        // here i am loading the mock data before component rendering.............
+        // initial value of listOfRestaurants is resList ie.mockdata
+        //const [listOfRestaurants,setListOfRestaurant]=useState(resList);
+        
+        // here i am not loading the data before component rendering.............
+        // initial value of listOfRestaurants is empty array
+        const [listOfRestaurants,setListOfRestaurant]=useState([]);
 
         useEffect(()=>{
             console.log("UseEffect Called");
@@ -35,6 +44,12 @@ const Body=()=>
         };
         
 
+
+        if(listOfRestaurants.length===0)
+            {
+                return <h1>Loading</h1>
+            }
+
         
 
         console.log("Component Rendering");
@@ -52,7 +67,7 @@ const Body=()=>
                     onClick={   
                                     ()=>{
 
-                                        const filteredList=listOfRestaurants.filter((res)=>res.info.avgRating>4.5);
+                                        const filteredList=listOfRestaurants.filter((res)=>res.info.avgRating>4);
                                         
                                         setListOfRestaurant(filteredList);
 
