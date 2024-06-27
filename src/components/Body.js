@@ -23,8 +23,9 @@ const Body=()=>
         // here i am not loading the data before component rendering.............
         // initial value of listOfRestaurants is empty array
         const [listOfRestaurants,setListOfRestaurant]=useState([]);
+        const [filteredRestaurant,setFilteredRestaurant]=useState([]);
 
-        const [searchText, setSearchText]=useState("");
+        const [searchText, setSearchText]=useState([]);
 
 
         
@@ -51,6 +52,7 @@ const Body=()=>
 
             //OPTIONAL CHAINING ( ?. ) 
             setListOfRestaurant(jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+            setFilteredRestaurant(jsonData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         };
         
 
@@ -85,11 +87,11 @@ const Body=()=>
                                 console.log(searchText);
                                 
                                 
-                                const filteredRestaurants=listOfRestaurants.filter(
+                                const filteredRestaurant=listOfRestaurants.filter(
                                     (res) => res.info.name.toLowerCase().includes(searchText.toLowerCase())
                                 );
                                 
-                                setListOfRestaurant(filteredRestaurants);
+                                setFilteredRestaurant(filteredRestaurant);
 
                                 }
                         }       
@@ -143,20 +145,13 @@ const Body=()=>
                     {/* Instead of this ^ i have used map to itterate the data.  */}
 
                     {
-                       listOfRestaurants.map(restaurant => <RestaurantCard key={restaurant.info.id} resData={restaurant} />)
+                       filteredRestaurant.map(restaurant => <RestaurantCard key={restaurant.info.id} resData={restaurant} />)
                     // resList.map(restaurant => <RestaurantCard key={restaurant.info.id} resData={restaurant} />)
 
                     }
 
 
-
-
-                                           
-                    
-
-                    
-                    
-                    
+ 
 
                 </div>
 
