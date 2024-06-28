@@ -25,9 +25,11 @@ const Body=()=>
         const [listOfRestaurants,setListOfRestaurant]=useState([]);
         const [filteredRestaurant,setFilteredRestaurant]=useState([]);
 
-        const [searchText, setSearchText]=useState([]);
+        const [searchText, setSearchText]=useState("");
 
 
+
+        
         
         console.log("Component Rendering");
 
@@ -104,9 +106,8 @@ const Body=()=>
 
                                         const filteredList=listOfRestaurants.filter((res)=>res.info.avgRating>4);
                                         
-                                        setListOfRestaurant(filteredList);
-
-                                        // setListOfRestaurant(
+                                        // Error   bug hai is line mai!! --->  setListOfRestaurant(filteredList);
+                                            setFilteredRestaurant(filteredList);    // setListOfRestaurant(
                                         //     listOfRestaurants.filter((res)=>res.info.avgRating>4)
                                         // );
 
@@ -173,3 +174,8 @@ const Body=()=>
 
 
     export default Body;
+
+
+
+
+    
