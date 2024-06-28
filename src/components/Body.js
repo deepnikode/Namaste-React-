@@ -107,8 +107,8 @@ const Body=()=>
                                         const filteredList=listOfRestaurants.filter((res)=>res.info.avgRating>4);
                                         
                                         // Error   bug hai is line mai!! --->  setListOfRestaurant(filteredList);
-                                            setFilteredRestaurant(filteredList);    // setListOfRestaurant(
-                                        //     listOfRestaurants.filter((res)=>res.info.avgRating>4)
+                                            setFilteredRestaurant(filteredList);   
+                                             // setListOfRestaurant(listOfRestaurants.filter((res)=>res.info.avgRating>4)
                                         // );
 
 
